@@ -1,5 +1,5 @@
 # Hexcalc
-Calculate decimal, hexadecimal, octal, binary, and character values based on an inputted value. Or calculate the total of two hexadecimal values added or subtracted together.
+Calculate decimal, hexadecimal, octal, binary, and character values based on an inputted value. Or alternatively calculate the total of two hexadecimal values added or subtracted together.
 ## Getting Started
 These instructions will get a copy of the project up and running on your local machine.
 ### Prerequisites
@@ -20,7 +20,7 @@ You can now run Hexcalc by entering `hexcalc` in your terminal.
 make uninstall
 ```
 ### Examples
-sa
+test
 ## Versioning
 For the versions available, see the [tags on this repository](https://github.com/edrossiter/Hexcalc/tags). 
 ## Authors
