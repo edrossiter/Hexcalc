@@ -3,7 +3,7 @@ Calculate decimal, hexadecimal, octal, binary, and character values based on an 
 ### Usage
 1) Download Hexcalc with the following command:
 ```
-git clone https://github.com/ejrossiter/Hexcalc.git
+git clone https://github.com/ejrossiter/Hexcalc
 ```
 2) Switch to your Hexcalc directory and run the installer with this command:
 ```
