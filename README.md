@@ -1,7 +1,7 @@
 # Hexcalc
 Calculate decimal, hexadecimal, octal, binary, and character values based on an inputted value. Or, alternatively calculate the total of two hexadecimal values added or subtracted together.
 ## Getting Started
-These instructions will get a copy of the project up and running on your local machine.
+The following instructions will produce an up and running copy of the project on your local machine.
 ### Prerequisites
 Nill
 ### Installing
