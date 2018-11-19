@@ -1,0 +1,121 @@
+#!/usr/bin/python
+
+##############################################################################################
+## [Title]: Hexcalc                                                                         ##
+## [Author]: Edward Rossiter                                                                ##
+## [Version]: 1.0                                                                           ##
+## ---------------------------------------------------------------------------------------- ##
+## [Details]: Calculate decimal, hexadecimal, octal, binary, and character values based on  ##
+## an inputted value. Or, alternatively calculate the total of two hexadecimal values added ##
+## or subtracted together.                                                                  ##
+## ---------------------------------------------------------------------------------------- ##
+## [License]: GNU General Public License v3.0                                               ##
+##############################################################################################
+
+import sys
+
+##### Header #####
+header = "  __    __                             ______             __           \n"
+header += " /  |  /  |                           /      \           /  |          \n"
+header += " $$ |  $$ |  ______   __    __       /$$$$$$  |  ______  $$ |  _______ \n"
+header += " $$ |__$$ | /      \ /  \  /  |      $$ |  $$/  /      \ $$ | /       |\n"
+header += " $$    $$ |/$$$$$$  |$$  \/$$/       $$ |       $$$$$$  |$$ |/$$$$$$$/ \n"
+header += " $$$$$$$$ |$$    $$ | $$  $$<        $$ |   __  /    $$ |$$ |$$ |      \n"
+header += " $$ |  $$ |$$$$$$$$/  /$$$$  \       $$ \__/  |/$$$$$$$ |$$ |$$ \_____ \n"
+header += " $$ |  $$ |$$       |/$$/ $$  |      $$    $$/ $$    $$ |$$ |$$       |\n"
+header += " $$/   $$/  $$$$$$$/ $$/   $$/        $$$$$$/   $$$$$$$/ $$/  $$$$$$$/ \n"
+print header
+
+##### Functions #####
+def help_option():
+    print " Usage: hexcalc [OPTION]... [VALUE]... [VALUE]..."
+    print " Calculate decimal, hexadecimal, octal, binary, and character values"
+    print " based on an inputted value. Or, alternatively calculate the total of"
+    print " two hexadecimal values added or subtracted together.\n"
+    print " Options: (No value)"
+    print "   -h, --help   Help menu\n"
+    print " Options: (One value)"
+    print "   --dec        Printout based on a supplied decimal"
+    print "   --hex        Printout based on a supplied hexadecimal"
+    print "   --oct        Printout based on a supplied octal"
+    print "   --bin        Printout based on a supplied binary"
+    print "   --chr        Printout based on a supplied character\n"
+    print " Options: (Two values)"
+    print "   --add        Print total of two hexadecimals added together"
+    print "   --sub        Print total of two hexadecimals subtracted together"
+
+def display_data(dec_val):
+    hex_val = hex(int(dec_val))
+    oct_val = oct(int(dec_val))
+    bin_val = bin(int(dec_val))
+    if (int(dec_val) >= 32 and int(dec_val) <= 126):
+        chr_val = chr(int(dec_val))
+    else:
+        chr_val = "No visible character" 
+    print " Decimal: " + str(dec_val)
+    print " Hexadecimal: " + str(hex_val)
+    print " Octal: " + str(oct_val)
+    print " Binary: " + str(bin_val)
+    print " Character: " + str(chr_val)
+    return
+
+def display_total(hex_val1,hex_val2):
+    dec_val1 = int(hex_val1,16)
+    dec_val2 = int(hex_val2,16)
+    if (sys.argv[1] == "--add"):
+        dec_total = dec_val1 + dec_val2
+    elif (sys.argv[1] == "--sub"):
+        dec_total = dec_val1 - dec_val2
+    hex_total = hex(int(dec_total))
+    print " Hexadecimal:                   Decimal:"
+    space_count = 10 + (10 - len(hex_val1))
+    print "   Value one: " + str(hex_val1) + " " * space_count + "Value one: " + str(dec_val1)
+    space_count = 10 + (10 - len(hex_val2))
+    print "   Value two: " + str(hex_val2) + " " * space_count + "Value two: " + str(dec_val2) + "\n"
+    space_count = 14 + (10 - len(hex_total))
+    print "       Total: " + str(hex_total) + " " * space_count + "Total: " + str(dec_total)
+
+def dec_display(dec_val):
+    display_data(dec_val)
+
+def hex_display(hex_val):
+    display_data(int(hex_val,16))
+
+def oct_display(oct_val):
+    display_data(int(oct_val,8))
+
+def bin_display(bin_val):
+    display_data(int(bin_val,2))
+
+def chr_display(chr_val):
+    display_data(ord(chr_val))
+
+##### Main #####
+show_help = True
+if (len(sys.argv) < 3 or len(sys.argv) > 4):
+    help_option()
+else:
+    try:
+        if (sys.argv[1] == "--dec"):
+            show_help = False
+            dec_display(sys.argv[2])
+        elif (sys.argv[1] == "--hex"):
+            show_help = False
+            hex_display(sys.argv[2])
+        elif (sys.argv[1] == "--oct"):
+            show_help = False
+            oct_display(sys.argv[2])
+        elif (sys.argv[1] == "--bin"):
+            show_help = False
+            bin_display(sys.argv[2])
+        elif (sys.argv[1] == "--chr"):
+            show_help = False
+            chr_display(sys.argv[2])
+        elif (sys.argv[1] == "--add" or sys.argv[1] == "--sub"):
+            show_help = False
+            display_total(sys.argv[2],sys.argv[3])
+    except:
+        help_option()
+    else:
+        if (show_help):
+            help_option()
